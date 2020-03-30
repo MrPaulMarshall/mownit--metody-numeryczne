@@ -23,12 +23,12 @@ int main()
 
     for (int i = 0; i < vec.size(); i++) {
         std::cout.precision(std::numeric_limits<double>::digits10 + 2);
-
         std::cout << "sumForwFloat(" << vec[i] << ") = " << sumForwFloat(vec[i]) << std::endl;
         std::cout << "sumBackFloat(" << vec[i] << ") = " << sumBackFloat(vec[i]) << std::endl;
         std::cout << "sumKahanFloat(" << vec[i] << ") = " << sumKahanFloat(vec[i]) << std::endl;
         std::cout << std::endl;
 
+        std::cout.precision(std::numeric_limits<float>::digits10 + 2);
         std::cout << "sumForwDouble(" << vec[i] << ") = " << sumForwDouble(vec[i]) << std::endl;
         std::cout << "sumBackDouble(" << vec[i] << ") = " << sumBackDouble(vec[i]) << std::endl;
         std::cout << "sumKahanDouble(" << vec[i] << ") = " << sumKahanDouble(vec[i]) << std::endl;
@@ -125,7 +125,7 @@ double sumKahanDouble(const int n) {
     double err = 0.0;
     std::vector<double> vec;
     prepareVector(vec, n);
-    for (int k = 0; k < n + 1; k++) {
+    for (int k = 1; k < n + 1; k++) {
         double y = vec[k] - err;
         double temp = sum + y;
         err = (temp - y) - sum;
